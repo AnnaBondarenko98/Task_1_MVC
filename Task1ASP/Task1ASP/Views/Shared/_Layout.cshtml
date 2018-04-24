@@ -6,34 +6,60 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+ 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+ 
+    <script type="text/javascript">
+ 
+        $(function() {
+ 
+            $(window).scroll(function() {
+ 
+                if($(this).scrollTop() != 0) {
+ 
+                    $('#toTop').fadeIn();
+ 
+                } else {
+ 
+                    $('#toTop').fadeOut();
+ 
+                }
+ 
+            });
+ 
+            $('#toTop').click(function() {
+ 
+                $('body,html').animate({scrollTop:0},800);
+ 
+            });
+ 
+        });
+ 
+    </script>
 </head>
 <body>
-    <div id="up" class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-           
+
+<div id="up" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+
+            <img src="~/Content/logo_blog_English.png"></img>
+            @Html.ActionLink("My Blog", "Main", "Home", new {area = ""}, new {@class = "navbar-link "})
+
         </div>
+
     </div>
+</div>
 <div class="container body-content">
     <div class="main"> @RenderBody()</div>
-    <div class="navbar-right">
-        <div class="item">@Html.ActionLink("Main page", "Main", "Home")</div>
-        <div class="item">@Html.ActionLink("Guest page", "Guest", "Home")</div>
-        <div class="item">@Html.ActionLink("Questionnaire", "Question", "Home")</div>
-    </div>
-   
+    @RenderSection("Menu", false)
+
 </div>
-<hr />
+<hr/>
 <footer>
     <span>&copy; @DateTime.Now.Year </span>
-    <a href="#up" >UP ^</a>
+    <button id="toTop">UP ^</button>
 </footer>
 @*<div class="navbar navbar-default  navbar-fixed-bottom ">
     <div class="container">

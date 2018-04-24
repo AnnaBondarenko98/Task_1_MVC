@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<Task1ASP.Models.Article>
-
+@section Menu{
+    <div class="navbar-right">
+        <div class="item">@Html.ActionLink("Main page", "Main", "Home")</div>
+        <div class="item">@Html.ActionLink("Guest page", "Guest", "Home")</div>
+        <div class="item">@Html.ActionLink("Questionnaire", "Questin", "Home")</div>
+    </div>
+}
 @{
     ViewBag.Title = "Main page";
 }
@@ -28,7 +34,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => item.Text)
+                @Html.DisplayFor(model => item.Text, new { htmlAttributes = new { @class="animals"}})
             </dd>
         </dl>
 

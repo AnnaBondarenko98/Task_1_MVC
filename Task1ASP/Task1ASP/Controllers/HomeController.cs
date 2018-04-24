@@ -32,12 +32,22 @@ namespace Task1ASP.Controllers
 
             return View(context.Set<Comment>().OrderByDescending(o=>o.date).ToArray());
         }
-
-        public ActionResult Question()
+        
+        public ActionResult Questin(Questionnaire q, string[] names,string eye)
         {
-            ViewBag.Message = "Your contact page.";
+            if (Request.HttpMethod=="GET" )
+            {
+                
 
-            return View();
+                return View("Questin");
+            }
+            else
+            {
+                q.Eye = eye;
+                q.Animals = names.ToList();
+                return View("QuestinPost",q);
+            }
+           
         }
     }
 }
