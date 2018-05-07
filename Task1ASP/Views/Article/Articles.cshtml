@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BlogAsp.Models.Models.Article>
+
+@section Menu{
+    <div class="navbar-right">
+        <div class="item">@Html.ActionLink("Main page", "Articles", "Article")</div>
+        <div class="item">@Html.ActionLink("Guest page", "Comments", new { controller = "Comment", area = "" })</div>
+        <div class="item">@Html.ActionLink("Questionnaire", "Question", new { controller = "Quest", area = "" })</div>
+    </div>
+}
+@{
+    ViewBag.Title = "Main page";
+}
+
+
+@foreach (var item in Model)
+{
+    <div>
+        <dl class="dl-horizontal font-details">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Date)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Text, new { htmlAttributes = new { @class = "animals" } })
+            </dd>
+        </dl>
+    </div>
+}

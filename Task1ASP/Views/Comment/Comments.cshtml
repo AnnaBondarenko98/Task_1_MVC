@@ -1,0 +1,31 @@
+﻿
+@using BlogAsp.Models.Models
+
+@model IEnumerable<Comment>
+@{
+    ViewBag.Title = "Main page";
+
+}
+@{
+    Html.RenderPartial("NewComment", new Comment());
+}
+<div>
+    @foreach (var b in Model)
+    {
+        <div class="item row itemcomment ">
+            <div class="col-md-2">
+                <div >
+                    <div>@b.Date </div>
+                </div>
+            </div>
+            <div class=" col-md-10">
+                <div class=""><h5>@b.Author</h5></div>
+                <div class=" ">
+                    @b.Text
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+<br />

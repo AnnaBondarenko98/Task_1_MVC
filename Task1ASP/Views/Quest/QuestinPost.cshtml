@@ -1,0 +1,36 @@
+﻿@using Task1ASP.Helpers
+@model BlogAsp.Models.Models.Question
+@{
+    ViewBag.Title = "QuestinPost";
+}
+<div>
+    <dl class="dl-horizontal font-details">
+        <dt>
+            @Html.DisplayNameFor(model => model.About)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.About)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Eye)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Eye)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model=>model.Animals)
+        </dt>
+        <dd>
+            @Html.CreateList(Model.Animals.ToArray())
+        </dd>
+    </dl>
+</div>
+
+
+
