@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
-namespace BlogAsp.DAL.Interfaces
+namespace BlogAsp.BLL.DALInterfaces
 {
     public interface IBlogContext:IDisposable
     {

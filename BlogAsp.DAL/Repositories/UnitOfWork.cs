@@ -1,5 +1,5 @@
 ﻿using System;
-using BlogAsp.DAL.Interfaces;
+using BlogAsp.BLL.DALInterfaces;
 using BlogAsp.Models.Models;
 
 namespace BlogAsp.DAL.Repositories

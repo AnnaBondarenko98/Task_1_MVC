@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using BlogAsp.BLL.Infrastructure.Autofac;
 
 namespace Task1ASP.Infrastructure.Autofac
 {

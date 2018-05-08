@@ -1,7 +1,7 @@
 ﻿using System;
 using BlogAsp.Models.Models;
 
-namespace BlogAsp.DAL.Interfaces
+namespace BlogAsp.BLL.DALInterfaces
 {
     /// <summary>
     /// Unit of Repositories

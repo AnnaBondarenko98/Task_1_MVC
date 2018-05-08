@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using BlogAsp.BLL.DALInterfaces;
 using BlogAsp.BLL.Interfaces;
-using BlogAsp.DAL.Interfaces;
 using BlogAsp.Models.Models;
 
 namespace BlogAsp.BLL.Services

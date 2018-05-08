@@ -1,9 +1,10 @@
 ﻿using Autofac;
+using BlogAsp.BLL.DALInterfaces;
 using BlogAsp.DAL.EF;
-using BlogAsp.DAL.Interfaces;
 using BlogAsp.DAL.Repositories;
 
-namespace BlogAsp.BLL.Infrastructure.Autofac
+
+namespace Task1ASP.Infrastructure.Autofac
 {
     public class ServiceModule : Module
     {
@@ -16,7 +17,7 @@ namespace BlogAsp.BLL.Infrastructure.Autofac
 
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().SingleInstance();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
 
             builder.RegisterType<BlogContext>().As<IBlogContext>().WithParameter("connection", _connection);
         }

@@ -171,6 +171,7 @@
     <Compile Include="Helpers\ListHelper.cs" />
     <Compile Include="Infrastructure\Autofac\AutofacConfig.cs" />
     <Compile Include="Infrastructure\Autofac\WebModule.cs" />
+    <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,6 +235,10 @@
     <ProjectReference Include="..\BlogAsp.BLL\BlogAsp.BLL.csproj">
       <Project>{054D9095-194C-482E-B277-FDCBA2FC058C}</Project>
       <Name>BlogAsp.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlogAsp.DAL\BlogAsp.DAL.csproj">
+      <Project>{94B80674-370A-4C50-B093-2C59CDF15698}</Project>
+      <Name>BlogAsp.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlogAsp.Models\BlogAsp.Models.csproj">
       <Project>{7B8560D1-5314-4F8D-A2F8-2148AF2AE391}</Project>

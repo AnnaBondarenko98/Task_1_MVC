@@ -1,8 +1,8 @@
-﻿using BlogAsp.DAL.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using BlogAsp.BLL.DALInterfaces;
 
 namespace BlogAsp.DAL.Repositories
 {

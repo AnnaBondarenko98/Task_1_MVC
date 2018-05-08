@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace BlogAsp.DAL.Interfaces
+namespace BlogAsp.BLL.DALInterfaces
 {
     /// <summary>
     /// Common Repository
