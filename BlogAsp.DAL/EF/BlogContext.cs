@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using BlogAsp.DAL.Interfaces;
 using BlogAsp.Models.Models;
 
