@@ -3,8 +3,7 @@ using BlogAsp.BLL.DALInterfaces;
 using BlogAsp.DAL.EF;
 using BlogAsp.DAL.Repositories;
 
-
-namespace Task1ASP.Infrastructure.Autofac
+namespace Task1ASP.Infrastructure.Autofac.DIModules
 {
     public class ServiceModule : Module
     {

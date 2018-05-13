@@ -1,0 +1,16 @@
+﻿@using Task1ASP.Enums
+
+@using (Html.BeginForm("Articles","Article", FormMethod.Post))
+{
+    @Html.DisplayName("Your gender:")
+    <br />
+    foreach (var item in Enum.GetValues(typeof(Gender)))
+    {
+        <label>
+            <input type="radio" name="gender" checked="checked" value="@item">@Html.DisplayName(item.ToString())
+        </label>
+        <br />
+    }
+
+    <input type="submit" value="Send" name="Vote"/>
+}

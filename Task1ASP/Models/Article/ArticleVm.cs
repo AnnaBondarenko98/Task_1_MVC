@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
-namespace BlogAsp.Models.Models
+namespace Task1ASP.Models.Article
 {
-    public class Article
+    public class ArticleVm
     {
         public int Id { get; set; }
 
@@ -24,7 +22,5 @@ namespace BlogAsp.Models.Models
         [StringLength(2500, MinimumLength = 1, ErrorMessage = "The text of article must be from 1 to 25000 characters")]
         [DataType(DataType.Text)]
         public string Text { get; set; }
-
-        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

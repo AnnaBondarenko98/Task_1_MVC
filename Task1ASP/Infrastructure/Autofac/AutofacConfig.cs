@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Task1ASP.Infrastructure.Autofac.DIModules;
 
 namespace Task1ASP.Infrastructure.Autofac
 {

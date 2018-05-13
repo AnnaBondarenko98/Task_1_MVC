@@ -2,6 +2,7 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 using Task1ASP.Infrastructure.Autofac;
+using Task1ASP.Infrastructure.Mapper;
 
 
 namespace Task1ASP
@@ -11,6 +12,7 @@ namespace Task1ASP
         protected void Application_Start()
         {
             AutofacConfig.ConfigureContainer();
+            MapperInitialize.InitializeAutoMapper();
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -14,6 +14,7 @@ namespace BlogAsp.DAL.Repositories
         private readonly Lazy<GenericGenericRepository<Question>> _questRepos;
         private readonly Lazy<GenericGenericRepository<Article>> _articleRepos;
         private readonly Lazy<GenericGenericRepository<Comment>> _commentRepos;
+        private readonly Lazy<GenericGenericRepository<Tag>> _tagRepos;
 
         public UnitOfWork(IBlogContext db)
         {
@@ -25,11 +26,14 @@ namespace BlogAsp.DAL.Repositories
                 () => new GenericGenericRepository<Article>(_db));
             _commentRepos = new Lazy<GenericGenericRepository<Comment>>(
                 () => new GenericGenericRepository<Comment>(_db));
+            _tagRepos = new Lazy<GenericGenericRepository<Tag>>(
+                () => new GenericGenericRepository<Tag>(_db));
         }
 
         public IGenericRepository<Question> QuestGenericRepository => _questRepos.Value;
         public IGenericRepository<Article> ArticleGenericRepository => _articleRepos.Value;
         public IGenericRepository<Comment> CommentGenericRepository => _commentRepos.Value;
+        public IGenericRepository<Tag> TagGenericRepository => _tagRepos.Value;
 
         public void Commit()
         {

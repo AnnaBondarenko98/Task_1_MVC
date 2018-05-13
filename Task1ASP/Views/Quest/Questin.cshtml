@@ -7,30 +7,30 @@
 
     @Html.DisplayNameFor(model => model.About)
     @Html.EditorFor(model => model.About)
-    <br/>
-    @Html.ValidationMessageFor(model => model.About,"", new { @class = "text-danger" })
+    <br />
+    @Html.ValidationMessageFor(model => model.About, "", new { @class = "text-danger" })
 
     <br /><br />
-         
-    @Html.DisplayNameFor(model=>model.Age)
+
+    @Html.DisplayNameFor(model => model.Age)
     @Html.EditorFor(model => model.Age)
-    @Html.ValidationMessageFor(model => model.Age,"", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
 
     <br /><br />
-          
-    @Html.DisplayNameFor(model=>model.Animals)
+
+    @Html.DisplayNameFor(model => model.Animals)
     foreach (var animal in Enum.GetValues(typeof(Animals)))
     {
-         <label class="checkbox ">
-             <input type="checkbox" name="Animals" checked="checked" value="@animal">@animal
-         </label>
+        <label class="checkbox ">
+            <input type="checkbox" name="Animals" checked="checked" value="@animal">@animal
+        </label>
     }
     <br /><br />
 
-  
 
 
-    @Html.DisplayNameFor(model=>model.Eye)
+
+    @Html.DisplayNameFor(model => model.Eye)
     foreach (var eye in Enum.GetValues(typeof(Eyes)))
     {
         <label class="radio ">

@@ -14,6 +14,8 @@ namespace BlogAsp.BLL.DALInterfaces
 
         IGenericRepository<Comment> CommentGenericRepository { get; }
 
+        IGenericRepository<Tag> TagGenericRepository { get; }
+
         void Commit();
     }
 }

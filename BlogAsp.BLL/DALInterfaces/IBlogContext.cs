@@ -4,7 +4,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace BlogAsp.BLL.DALInterfaces
 {
-    public interface IBlogContext:IDisposable
+    public interface IBlogContext : IDisposable
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 

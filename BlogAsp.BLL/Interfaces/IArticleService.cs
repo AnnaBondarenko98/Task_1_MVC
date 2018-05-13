@@ -10,5 +10,12 @@ namespace BlogAsp.BLL.Interfaces
         /// </summary>
         /// <returns></returns>
         IEnumerable<Article> GetAll();
+
+        /// <summary>
+        /// Get <see cref="Article"/>
+        /// </summary>
+        /// <returns></returns>
+        Article Get(int id);
+
     }
 }

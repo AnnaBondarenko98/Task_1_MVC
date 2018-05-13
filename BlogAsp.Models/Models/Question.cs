@@ -23,7 +23,7 @@ namespace BlogAsp.Models.Models
         [Required(ErrorMessage = "Please, choose your favourite eye color")]
         public string Eye { get; set; }
 
-        [Required(ErrorMessage = "Select enimals")]
+        [Required(ErrorMessage = "Select animals")]
         public ICollection<string> Animals { get; set; }
     }
 }
