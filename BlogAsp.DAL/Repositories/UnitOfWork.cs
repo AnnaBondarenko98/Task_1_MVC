@@ -16,6 +16,8 @@ namespace BlogAsp.DAL.Repositories
         private readonly Lazy<GenericGenericRepository<Comment>> _commentRepos;
         private readonly Lazy<GenericGenericRepository<Tag>> _tagRepos;
 
+        private bool _disposed;
+
         public UnitOfWork(IBlogContext db)
         {
             _db = db;
@@ -31,8 +33,11 @@ namespace BlogAsp.DAL.Repositories
         }
 
         public IGenericRepository<Question> QuestGenericRepository => _questRepos.Value;
+
         public IGenericRepository<Article> ArticleGenericRepository => _articleRepos.Value;
+
         public IGenericRepository<Comment> CommentGenericRepository => _commentRepos.Value;
+
         public IGenericRepository<Tag> TagGenericRepository => _tagRepos.Value;
 
         public void Commit()
@@ -40,7 +45,10 @@ namespace BlogAsp.DAL.Repositories
             _db.SaveChanges();
         }
 
-        private bool _disposed;
+        public void Dispose()
+        {
+            Dispose(true);
+        }
 
         protected virtual void Dispose(bool disposing)
         {
@@ -50,11 +58,6 @@ namespace BlogAsp.DAL.Repositories
 
                 _disposed = true;
             }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
         }
     }
 }

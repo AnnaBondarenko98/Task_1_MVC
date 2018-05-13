@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace BlogAsp.BLL.DALInterfaces
 {
     /// <summary>

@@ -2,7 +2,6 @@
 using BlogAsp.BLL.Interfaces;
 using BlogAsp.Models.Models;
 
-
 namespace Task1ASP.Controllers
 {
     public class QuestController : Controller
@@ -14,7 +13,7 @@ namespace Task1ASP.Controllers
             _questionService = questionService;
         }
 
-        public ActionResult Question(Question questionnaire, string[] names, string eye)
+        public ActionResult Question(Question questionnaire)
         {
             if (Request.HttpMethod == "GET")
             {

@@ -26,7 +26,7 @@ namespace BlogAsp.DAL.Repositories
 
         public void Delete(int id)
         {
-            T item = _database.Set<T>().Find(id);
+            var item = _database.Set<T>().Find(id);
 
             if (item != null)
             {

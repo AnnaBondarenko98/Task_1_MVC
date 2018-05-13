@@ -17,6 +17,5 @@ namespace BlogAsp.BLL.Interfaces
         /// </summary>
         /// <returns></returns>
         IEnumerable<Comment> GetAll();
-
     }
 }

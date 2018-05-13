@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlogAsp.Models.Models
 {
-
     public class Question
     {
         public int Id { get; set; }

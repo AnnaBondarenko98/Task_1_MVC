@@ -5,6 +5,6 @@ namespace BlogAsp.BLL.Interfaces
 {
     public interface ITagService
     {
-        IEnumerable<Article> GetArticlesByTagId(int id);
+        IEnumerable<Article> GetArticlesByTag(int id);
     }
 }

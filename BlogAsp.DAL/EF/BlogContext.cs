@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using BlogAsp.BLL.DALInterfaces;
 using BlogAsp.Models.Models;
 
@@ -10,7 +9,6 @@ namespace BlogAsp.DAL.EF
     /// </summary>
     public class BlogContext : DbContext, IBlogContext
     {
-
         public BlogContext(string connection) : base(connection)
         {
         }

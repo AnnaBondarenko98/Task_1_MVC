@@ -4,7 +4,6 @@ using System.Web.Routing;
 using Task1ASP.Infrastructure.Autofac;
 using Task1ASP.Infrastructure.Mapper;
 
-
 namespace Task1ASP
 {
     public class MvcApplication : System.Web.HttpApplication

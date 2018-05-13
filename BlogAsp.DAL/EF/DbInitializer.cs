@@ -24,7 +24,7 @@ namespace BlogAsp.DAL.EF
                     Date = DateTime.UtcNow
                 });
 
-            var tag1=new Tag
+            var tag1 = new Tag
             {
                 Text = "статья"
             };

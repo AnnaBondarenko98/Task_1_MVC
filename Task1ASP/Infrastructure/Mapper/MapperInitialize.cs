@@ -6,7 +6,7 @@ namespace Task1ASP.Infrastructure.Mapper
     {
         public static MapperConfiguration InitializeAutoMapper()
         {
-            MapperConfiguration config = new MapperConfiguration(cfg =>
+            var config = new MapperConfiguration(cfg =>
             {
                 cfg.ForAllMaps((map, expression) => map.PreserveReferences = true);
 
@@ -16,6 +16,5 @@ namespace Task1ASP.Infrastructure.Mapper
 
             return config;
         }
-
     }
 }

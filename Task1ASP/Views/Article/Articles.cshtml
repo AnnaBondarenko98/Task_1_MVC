@@ -36,7 +36,7 @@
             </dt>
             <dd>
                 @{
-                    var preview = item.Text.Substring(0, 200).ToString();
+                    var preview = item.Text.Substring(0, 200);
                 }
                 @Html.DisplayFor(model => preview, new {htmlAttributes = new {@class = "animals"}})
                 @Html.ActionLink("...", "Details", new{controller="Article",id=item.Id} )

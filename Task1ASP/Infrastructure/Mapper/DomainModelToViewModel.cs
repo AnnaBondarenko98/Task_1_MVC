@@ -4,7 +4,7 @@ using Task1ASP.Models.Article;
 
 namespace Task1ASP.Infrastructure.Mapper
 {
-    public class DomainModelToViewModel:Profile
+    public class DomainModelToViewModel : Profile
     {
         public DomainModelToViewModel()
         {

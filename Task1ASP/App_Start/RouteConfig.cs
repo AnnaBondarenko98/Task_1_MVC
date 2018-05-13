@@ -12,8 +12,7 @@ namespace Task1ASP
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Article", action = "Articles", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Article", action = "Articles", id = UrlParameter.Optional });
         }
     }
 }

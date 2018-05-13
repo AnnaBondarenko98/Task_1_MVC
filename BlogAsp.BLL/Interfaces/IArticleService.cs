@@ -16,6 +16,5 @@ namespace BlogAsp.BLL.Interfaces
         /// </summary>
         /// <returns></returns>
         Article Get(int id);
-
     }
 }

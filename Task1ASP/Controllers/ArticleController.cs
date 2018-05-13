@@ -51,12 +51,11 @@ namespace Task1ASP.Controllers
 
         public ActionResult TagActive(int id)
         {
-            var articles = _tagService.GetArticlesByTagId(id);
+            var articles = _tagService.GetArticlesByTag(id);
 
             var articlesVm = _mapper.Map<IEnumerable<ArticleVm>>(articles);
 
             return View("Articles", articlesVm);
-
         }
 
         [HttpPost]
