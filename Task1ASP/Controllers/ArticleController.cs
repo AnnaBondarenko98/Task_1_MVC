@@ -48,7 +48,6 @@ namespace Task1ASP.Controllers
         {
             if (HttpContext.Request.Cookies["cookie"] == null)
             {
-                // ReSharper disable once PossibleNullReferenceException
                 HttpContext.Response.Cookies["cookie"].Value = "value";
             }
 
