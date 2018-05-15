@@ -33,12 +33,25 @@ namespace Task1ASP.Controllers
         [HttpGet]
         public ActionResult Vote()
         {
-            return PartialView("Vote");
+            if (HttpContext.Request.Cookies["cookie"] == null)
+            {
+                return PartialView("Vote");
+            }
+            else
+            {
+                return PartialView("VoteComplete");
+            }
         }
 
         [HttpPost]
         public ActionResult Vote(string gender)
         {
+            if (HttpContext.Request.Cookies["cookie"] == null)
+            {
+                // ReSharper disable once PossibleNullReferenceException
+                HttpContext.Response.Cookies["cookie"].Value = "value";
+            }
+
             return PartialView("VoteComplete");
         }
 
