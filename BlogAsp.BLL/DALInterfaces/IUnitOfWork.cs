@@ -1,5 +1,7 @@
 ﻿using System;
+using BlogAsp.Models.Identity;
 using BlogAsp.Models.Models;
+
 
 namespace BlogAsp.BLL.DALInterfaces
 {
@@ -10,11 +12,18 @@ namespace BlogAsp.BLL.DALInterfaces
     {
         IGenericRepository<Question> QuestGenericRepository { get; }
 
+        IGenericRepository<User> UserGenericRepository { get; }
+
         IGenericRepository<Article> ArticleGenericRepository { get; }
 
         IGenericRepository<Comment> CommentGenericRepository { get; }
 
         IGenericRepository<Tag> TagGenericRepository { get; }
+
+        ApplicationRoleManager RoleManager { get; }
+
+        ApplicationUserManager UserManager { get; }
+
 
         void Commit();
     }

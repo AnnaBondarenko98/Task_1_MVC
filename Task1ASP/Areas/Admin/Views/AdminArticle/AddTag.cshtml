@@ -1,0 +1,11 @@
+﻿@model List<string>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddTag", "AdminArticle", FormMethod.Post))
+{
+    @Html.ListBox("selectedTags", new MultiSelectList(Model), new { htmlAttributes = new { @class = "mdb-select colorful-select dropdown-primary" } })
+    <input type="submit" value="Apply" class=" btn btn-primary btn-sm" />
+
+}

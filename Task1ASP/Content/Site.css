@@ -58,13 +58,13 @@
     margin: 2px;
     border-radius: 50px 50px;
     padding: 3px;
-    text-align: center;
+    text-align: center !important;
 }
 
-.font-details dd {
-    text-align: center;
-    padding-top: 18px;
-}
+    .font-details dd {
+        text-align: center !important;
+        padding-top: 18px;
+    }
 .itemcomment {
     width: 75%;
     box-shadow: none;
@@ -99,4 +99,13 @@ li  {
     color:#333;
     font-family:verdana;
     font-size:11px;
+}
+.btn-PrewDetails1{
+    border: 1px solid darkturquoise;
+    background-color: darkturquoise;
+    text-align: center;
+    min-width: 180px;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 7px;
 }

@@ -22,6 +22,7 @@ namespace BlogAsp.DAL.Repositories
         public void Create(T item)
         {
             _database.Set<T>().Add(item);
+            _database.SaveChanges();
         }
 
         public void Delete(int id)
@@ -31,6 +32,7 @@ namespace BlogAsp.DAL.Repositories
             if (item != null)
             {
                 _database.Set<T>().Remove(item);
+                _database.SaveChanges();
             }
         }
 
@@ -47,6 +49,7 @@ namespace BlogAsp.DAL.Repositories
         public void Update(T item)
         {
             _database.Entry(item).State = EntityState.Modified;
+            _database.SaveChanges();
         }
 
         public IEnumerable<T> Find(Func<T, bool> predicate)

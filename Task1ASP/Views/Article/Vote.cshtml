@@ -1,6 +1,5 @@
 ﻿@using Task1ASP.Enums
-
-@using (Html.BeginForm("Articles","Article", FormMethod.Post))
+@using (Html.BeginForm("GetArticles", "Article", FormMethod.Post))
 {
     @Html.DisplayName("Your gender:")
     <br />
@@ -12,5 +11,5 @@
         <br />
     }
 
-    <input type="submit" value="Send" name="Vote"/>
+    <input type="submit" value="Send" name="Vote" />
 }

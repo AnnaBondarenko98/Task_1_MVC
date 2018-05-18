@@ -8,7 +8,7 @@ namespace Task1ASP.Infrastructure.Mapper
     {
         public ViewModelToDomainModel()
         {
-            CreateMap<Article, ArticleVm>();
+            CreateMap<ArticleVm, Article>();
         }
     }
 }

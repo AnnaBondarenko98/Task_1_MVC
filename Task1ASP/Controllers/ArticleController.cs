@@ -11,17 +11,16 @@ namespace Task1ASP.Controllers
     {
         private readonly IArticleService _articleService;
         private readonly ITagService _tagService;
-
         private readonly IMapper _mapper;
 
-        public ArticleController(IArticleService articleService1, ITagService tagService, IMapper mapper)
+        public ArticleController(IArticleService articleService, ITagService tagService, IMapper mapper)
         {
-            _articleService = articleService1;
+            _articleService = articleService;
             _tagService = tagService;
             _mapper = mapper;
         }
 
-        public ActionResult Articles()
+        public ActionResult GetArticles()
         {
             var articles = _articleService.GetAll();
 
@@ -67,7 +66,7 @@ namespace Task1ASP.Controllers
 
             var articlesVm = _mapper.Map<IEnumerable<ArticleVm>>(articles);
 
-            return View("Articles", articlesVm);
+            return View("GetArticles", articlesVm);
         }
 
         [HttpPost]

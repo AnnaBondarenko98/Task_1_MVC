@@ -21,7 +21,7 @@ namespace BlogAsp.Models.Models
 
         [Display(Name = "Article text")]
         [StringLength(2500, MinimumLength = 1, ErrorMessage = "The text of article must be from 1 to 25000 characters")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.MultilineText)]
         public string Text { get; set; }
 
         public virtual ICollection<Tag> Tags { get; set; }

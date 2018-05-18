@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using BlogAsp.Models.Identity;
 using BlogAsp.Models.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BlogAsp.DAL.EF
 {
     /// <summary>
     /// Database initializer
     /// </summary>
-    internal class DbInitializer : DropCreateDatabaseAlways<BlogContext>
+    internal class DbInitializer : CreateDatabaseIfNotExists<BlogContext>
     {
         /// <summary>
         /// 
@@ -16,6 +19,32 @@ namespace BlogAsp.DAL.EF
         /// <param name="db">Database Context</param>
         protected override void Seed(BlogContext db)
         {
+            var userManager = new ApplicationUserManager(new UserStore<IdentityUser>(db));
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+
+            var role1 = new IdentityRole
+            {
+                Name = "user"
+            };
+
+            var role2 = new IdentityRole
+            {
+                Name = "admin"
+            };
+
+            roleManager.Create(role1);
+
+            roleManager.Create(role2);
+
+            var user = new IdentityUser { Email = "admin@admin.ua", UserName = "admin@admin.ua" };
+            var result = userManager.Create(user, "Qwerty12");
+
+            if (result != null)
+            {
+                userManager.AddToRole(user.Id, "admin");
+            }
+
             db.Comments.Add(
                 new Comment
                 {

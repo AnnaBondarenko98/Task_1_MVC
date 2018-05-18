@@ -16,5 +16,17 @@ namespace BlogAsp.BLL.Interfaces
         /// </summary>
         /// <returns></returns>
         Article Get(int id);
+
+        void Create(Article article);
+
+        void Update(Article article);
+
+        IEnumerable<Tag> GetTags(int id);
+
+        Article GetTvTariffWithChannels(Article article, string[] names);
+
+        void Delete(int id);
+
+
     }
 }

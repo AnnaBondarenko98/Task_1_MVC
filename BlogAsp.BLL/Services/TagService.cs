@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Core;
 using BlogAsp.BLL.DALInterfaces;
 using BlogAsp.BLL.Interfaces;
@@ -25,6 +26,18 @@ namespace BlogAsp.BLL.Services
             }
 
             return tag.Articles;
+        }
+
+        public IEnumerable<Tag> GetAll()
+        {
+            return _unitOfWork.TagGenericRepository.GetAll();
+        }
+
+        public IEnumerable<Tag> Find(Func<Tag, bool> predicate)
+        {
+                IEnumerable<Tag> tarrifs = (_unitOfWork.TagGenericRepository.Find(predicate));
+
+                return tarrifs;
         }
     }
 }

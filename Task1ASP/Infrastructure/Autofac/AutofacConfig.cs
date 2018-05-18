@@ -19,6 +19,7 @@ namespace Task1ASP.Infrastructure.Autofac
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
         }
     }
 }

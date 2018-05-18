@@ -12,6 +12,7 @@ namespace Task1ASP.Infrastructure.Autofac.DIModules
             builder.RegisterType<ArticleService>().As<IArticleService>();
             builder.RegisterType<CommentService>().As<ICommentService>();
             builder.RegisterType<QuestionService>().As<IQuestionService>();
+            builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<TagService>().As<ITagService>();
 
             var mapper = MapperInitialize.InitializeAutoMapper().CreateMapper();

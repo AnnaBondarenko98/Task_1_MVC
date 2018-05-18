@@ -22,6 +22,7 @@ namespace BlogAsp.BLL.Services
             }
 
             _unitOfWork.QuestGenericRepository.Create(item);
+
             _unitOfWork.Commit();
         }
     }

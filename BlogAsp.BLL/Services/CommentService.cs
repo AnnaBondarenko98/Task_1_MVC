@@ -25,6 +25,7 @@ namespace BlogAsp.BLL.Services
             item.Date = DateTime.UtcNow;
 
             _unitOfWork.CommentGenericRepository.Create(item);
+
             _unitOfWork.Commit();
         }
 
