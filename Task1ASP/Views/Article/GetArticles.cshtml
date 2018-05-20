@@ -1,65 +1,63 @@
 ﻿@model IEnumerable<Task1ASP.Models.Article.ArticleVm>
 @section Menu{
-    <div class="navbar-right">
-        <div class="item">@Html.ActionLink("Main page", "GetArticles", "Article")</div>
-        <div class="item">@Html.ActionLink("Guest page", "Comments", new { controller = "Comment", area = "" })</div>
-        <div class="item">@Html.ActionLink("Questionnaire", "Question", new { controller = "Quest", area = "" })</div>
-        @Html.Action("Vote")
-    </div>
-
+	<div class="navbar-right">
+		<div class="item">@Html.ActionLink("Main page", "GetArticles", "Article")</div>
+		<div class="item">@Html.ActionLink("Guest page", "Comments", new { controller = "Comment", area = "" })</div>
+		<div class="item">@Html.ActionLink("Questionnaire", "Question", new { controller = "Quest", area = "" })</div>
+		@Html.Action("Vote")
+	</div>
 }
 @{
-    ViewBag.Title = "Main page";
+	ViewBag.Title = "Main page";
 }
-
 @foreach (var item in Model)
 {
-    <div>
-        <dl class="dl-horizontal font-details">
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => item.Name)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Date)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => item.Date)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Text)
-            </dt>
-            <dd>
-                @{
-                    if (item.Text.Length > 200)
-                    {
-                        var preview = item.Text.Substring(0, 200);
-                        @Html.DisplayFor(model => preview, new { htmlAttributes = new { @class = "animals" } })
-                        @Html.ActionLink("...", "Details", new { controller = "Article", id = item.Id })
-                    }
-                    else
-                    {
-                        var preview = item.Text;
-                        @Html.DisplayFor(model => preview, new { htmlAttributes = new { @class = "animals" } })
-                    }
-                }
-            </dd>
-            
-        </dl>
-        @if (User.IsInRole("admin"))
-        {
-            <div class="btn btn-PrewDetails1">
-                @Html.ActionLink("Add new Tag","AddTag", new { controller = "AdminArticle", area = "Admin", id = item.Id })
-            </div>
-            <div class="btn ">
-                @Html.ActionLink("Edit", "Edit", new { controller = "AdminArticle", area = "Admin", id = item.Id })
-            </div>
-            <div class="btn ">
-                @Html.ActionLink("Delete", "Delete", new { controller = "AdminArticle", area = "Admin", id = item.Id })
-            </div>
-        }
-    </div>
-    <hr/>
+	<div>
+		<dl class="dl-horizontal font-details">
+			<dt>
+				@Html.DisplayNameFor(model => model.Name)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => item.Name)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Date)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => item.Date)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Text)
+			</dt>
+			<dd>
+				@{
+					if (item.Text.Length > 200)
+					{
+						var preview = item.Text.Substring(0, 200);
+						@Html.DisplayFor(model => preview, new { htmlAttributes = new { @class = "animals" } })
+						@Html.ActionLink("...", "Details", new { controller = "Article", id = item.Id })
+					}
+					else
+					{
+						var preview = item.Text;
+						@Html.DisplayFor(model => preview, new { htmlAttributes = new { @class = "animals" } })
+					}
+				}
+			</dd>
+
+		</dl>
+		@if (User.IsInRole("admin"))
+		{
+			<div class="btn">
+				@Html.ActionLink("Add new Tag", "AddTag", new { controller = "AdminArticle", area = "Admin", id = item.Id })
+			</div>
+			<div class="btn ">
+				@Html.ActionLink("Edit", "Edit", new { controller = "AdminArticle", area = "Admin", id = item.Id })
+			</div>
+			<div class="btn ">
+				@Html.ActionLink("Delete", "Delete", new { controller = "AdminArticle", area = "Admin", id = item.Id })
+			</div>
+		}
+	</div>
+	<hr />
 }

@@ -35,9 +35,9 @@ namespace BlogAsp.BLL.Services
 
         public IEnumerable<Tag> Find(Func<Tag, bool> predicate)
         {
-                IEnumerable<Tag> tarrifs = (_unitOfWork.TagGenericRepository.Find(predicate));
+            var tags = _unitOfWork.TagGenericRepository.Find(predicate);
 
-                return tarrifs;
+            return tags;
         }
     }
 }

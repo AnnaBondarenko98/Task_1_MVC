@@ -6,7 +6,7 @@ namespace BlogAsp.Models.Identity
 {
     public class ApplicationUserManager : UserManager<IdentityUser>
     {
-        public ApplicationUserManager(UserStore<IdentityUser> store) : base(store)
+        public ApplicationUserManager(IUserStore<IdentityUser> store) : base(store)
         {
             var provider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("Providers");
 

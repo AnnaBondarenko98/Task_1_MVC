@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using BlogAsp.BLL.DALInterfaces;
 using BlogAsp.BLL.DTO;
 using BlogAsp.BLL.Interfaces;
-using BlogAsp.Models.Models;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BlogAsp.BLL.Services
 {
@@ -18,21 +15,12 @@ namespace BlogAsp.BLL.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public IEnumerable<User> GetAll()
-        {
-            return _unitOfWork.UserGenericRepository.GetAll();
-        }
-
-        public User Get(int id)
-        {
-            return _unitOfWork.UserGenericRepository.Get(id);
-        }
 
         public async Task<ClaimsIdentity> Authenticate(LoginDto loginDto)
         {
             ClaimsIdentity claim = null;
 
-            IdentityUser user = await _unitOfWork.UserManager.FindAsync(loginDto.Email, loginDto.Password);
+            var user = await _unitOfWork.UserManager.FindAsync(loginDto.Email, loginDto.Password);
 
             if (user != null)
             {
@@ -40,7 +28,6 @@ namespace BlogAsp.BLL.Services
             }
 
             return claim;
-
         }
 
         public void Dispose()

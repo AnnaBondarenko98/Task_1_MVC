@@ -12,6 +12,7 @@ namespace Task1ASP.Infrastructure.Mapper
 
                 cfg.AddProfile(new DomainModelToViewModel());
                 cfg.AddProfile(new ViewModelToDomainModel());
+                cfg.AddProfile(new ViewModelToDto());
             });
 
             return config;

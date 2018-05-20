@@ -19,8 +19,6 @@ namespace BlogAsp.DAL.Repositories
         private readonly Lazy<GenericGenericRepository<Comment>> _commentRepos;
         private readonly Lazy<GenericGenericRepository<User>> _userRepos;
         private readonly Lazy<GenericGenericRepository<Tag>> _tagRepos;
-        private readonly ApplicationRoleManager _appRoleManager;
-        private readonly ApplicationUserManager _appUserManager;
 
         private bool _disposed;
 
@@ -38,8 +36,8 @@ namespace BlogAsp.DAL.Repositories
                 () => new GenericGenericRepository<User>(_db));
             _tagRepos = new Lazy<GenericGenericRepository<Tag>>(
                 () => new GenericGenericRepository<Tag>(_db));
-            _appUserManager = new ApplicationUserManager(new UserStore<IdentityUser>((BlogContext)_db));
-            _appRoleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>((BlogContext)_db));
+            UserManager = new ApplicationUserManager(new UserStore<IdentityUser>((BlogContext)_db));
+            RoleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>((BlogContext)_db));
         }
 
         public IGenericRepository<Question> QuestGenericRepository => _questRepos.Value;
@@ -52,9 +50,9 @@ namespace BlogAsp.DAL.Repositories
 
         public IGenericRepository<Tag> TagGenericRepository => _tagRepos.Value;
 
-        public ApplicationRoleManager RoleManager => _appRoleManager;
+        public ApplicationRoleManager RoleManager { get; }
 
-        public ApplicationUserManager UserManager => _appUserManager;
+        public ApplicationUserManager UserManager { get; }
 
         public void Commit()
         {

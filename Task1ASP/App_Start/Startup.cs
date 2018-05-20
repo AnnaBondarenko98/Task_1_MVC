@@ -12,7 +12,8 @@ namespace Task1ASP
 
     public class Startup
     {
-        public IServiceCreator serviceCreator = new ServiceCreator();
+
+        private readonly IServiceCreator _serviceCreator = new ServiceCreator();
 
         public void Configuration(IAppBuilder app)
         {
@@ -21,13 +22,13 @@ namespace Task1ASP
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/Account/Login")
             });
         }
 
         private IUserService CreateUserService()
         {
-            return serviceCreator.CreateUserService("BlogContext");
+            return _serviceCreator.CreateUserService("BlogContext");
         }
 
     }

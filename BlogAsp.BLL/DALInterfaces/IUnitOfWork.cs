@@ -24,7 +24,6 @@ namespace BlogAsp.BLL.DALInterfaces
 
         ApplicationUserManager UserManager { get; }
 
-
         void Commit();
     }
 }

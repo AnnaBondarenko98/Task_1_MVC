@@ -1,40 +1,40 @@
 ﻿@model BlogAsp.Models.Models.Article
 @section Menu{
-    <div class="navbar-right">
-        <div class="item">@Html.ActionLink("Main page", "GetArticles", "Article")</div>
-        <div class="item">@Html.ActionLink("Guest page", "Comments", new { controller = "Comment", area = "" })</div>
-        <div class="item">@Html.ActionLink("Questionnaire", "Question", new { controller = "Quest", area = "" })</div>
-    </div>
+	<div class="navbar-right">
+		<div class="item">@Html.ActionLink("Main page", "GetArticles", "Article")</div>
+		<div class="item">@Html.ActionLink("Guest page", "Comments", new { controller = "Comment", area = "" })</div>
+		<div class="item">@Html.ActionLink("Questionnaire", "Question", new { controller = "Quest", area = "" })</div>
+	</div>
 }
 @{
-    ViewBag.Title = "Main page";
+	ViewBag.Title = "Main page";
 }
 <div>
-    <dl class="dl-horizontal font-details">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Text, new { htmlAttributes = new { @class = "animals" } })
-        </dd>
-        <dt>Tags</dt>
-        <dd>
-            @foreach (var tag in Model.Tags)
-            {
-                @Html.ActionLink($"#{tag.Text} ", "TagActive", new { controller = "Article", id = tag.Id })
-            }
-        </dd>
-    </dl>
+	<dl class="dl-horizontal font-details">
+		<dt>
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Date)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Date)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Text)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Text, new { htmlAttributes = new { @class = "animals" } })
+		</dd>
+		<dt>Tags</dt>
+		<dd>
+			@foreach (var tag in Model.Tags)
+			{
+				@Html.ActionLink($"#{tag.Text} ", "TagActive", new { area = "", controller = "Article", id = tag.Id })
+			}
+		</dd>
+	</dl>
 </div>

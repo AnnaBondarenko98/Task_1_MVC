@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using BlogAsp.Models.Models;
+﻿using BlogAsp.Models.Models;
 
 namespace Task1ASP.Areas.Admin.Models
 {

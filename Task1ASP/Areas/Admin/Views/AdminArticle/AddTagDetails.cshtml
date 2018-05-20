@@ -1,35 +1,41 @@
-﻿@model BlogAsp.Models.Models.Article
+﻿@model Task1ASP.Areas.Admin.Models.ArticleAddTagVm
 @{
-    ViewBag.Title = "AddTagDetails";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "AddTagDetails";
 }
-
-<div>
-    <dl class="dl-horizontal font-details">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Text, new { htmlAttributes = new { @class = "animals" } })
-        </dd>
-        <dt>Tags</dt>
-        <dd>
-            @foreach (var tag in Model.Tags)
-            {
-                @Html.ActionLink($"#{tag.Text} ", "TagActive", new { controller = "Article", id = tag.Id })
-            }
-        </dd>
-    </dl>
-</div>
-@Html.Partial("AddTag", (List<string>)ViewBag.Tags);
+@using (Html.BeginForm("AddTag", "AdminArticle", FormMethod.Post))
+{
+	<div>
+		@Html.HiddenFor(model => model.Id)
+		<dl class="dl-horizontal font-details">
+			<dt>
+				@Html.DisplayNameFor(model => model.Name)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Name)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Date)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Date)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Text)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Text, new { htmlAttributes = new { @class = "animals" } })
+			</dd>
+			<dt>Tags</dt>
+			<dd>
+				@foreach (var tag in Model.Tags)
+				{
+					@Html.ActionLink($"#{tag.Text}", "TagActive", new { area = "", controller = "Article", id = tag.Id })
+				}
+			</dd>
+		</dl>
+	</div>
+	<div>@Html.DisplayName("Рекомендуемые теги:")</div>
+	@Html.ListBoxFor(model => model.PopularTags, new MultiSelectList(Model.PopularTags, Model.Tags.FirstOrDefault()?.Text), new { htmlAttributes = new { @class = "mdb-select colorful-select dropdown-primary" } })
+	<input type="submit" value="Apply" class=" btn btn-primary btn-sm" />
+}

@@ -23,10 +23,10 @@ namespace BlogAsp.BLL.Interfaces
 
         IEnumerable<Tag> GetTags(int id);
 
-        Article GetTvTariffWithChannels(Article article, string[] names);
+        void GetArticlesWithTags(Article article, IEnumerable<string> names);
+
+        IEnumerable<string> GetMostPopularTags(Article article, int count);
 
         void Delete(int id);
-
-
     }
 }

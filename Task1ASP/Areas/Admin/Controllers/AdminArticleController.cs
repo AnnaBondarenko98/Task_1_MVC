@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
 using BlogAsp.BLL.Interfaces;
@@ -16,8 +14,7 @@ namespace Task1ASP.Areas.Admin.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IArticleService _articleService;
-        private static int _articleId;
-        private ITagService _tagService;
+        private readonly ITagService _tagService;
 
         public AdminArticleController(IMapper mapper, IArticleService articleService, ITagService tagService)
         {
@@ -35,103 +32,60 @@ namespace Task1ASP.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(ArticleVm articleVm)
         {
-            articleVm.Date = DateTime.UtcNow;
-
             _articleService.Create(_mapper.Map<Article>(articleVm));
 
-            return RedirectToAction("GetArticles", "Article", new
-            {
-                area = ""
-            });
+            return RedirectToAction("GetArticles", "Article", new { area = "" });
         }
 
         [HttpGet]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            List<CheckModel> tags = new List<CheckModel>();
+            var tags = _tagService.GetAll();
+            var checkTags = _mapper.Map<ICollection<CheckModel>>(tags);
 
-            foreach (var item in _tagService.GetAll())
-            {
-                if (_tagService.GetAll().Except(_articleService.Get((int)id).Tags).Contains(item))
-                {
-                    CheckModel ch = new CheckModel()
-                    {
-                        Tag = item,
-                        Checked = false
-                    };
-                    tags.Add(ch);
-                }
-                else
-                {
-                    CheckModel ch = new CheckModel()
-                    {
-                        Tag = item,
-                        Checked = true
-                    };
-                    tags.Add(ch);
-                }
+            var article = _articleService.Get(id);
+            var editArticle = _mapper.Map<EditArticle>(article);
 
+            foreach (var item in checkTags)
+            {
+                if (editArticle.Tags.Any(tag => tag.Text == item.Tag?.Text))
+                {
+                    item.Checked = true;
+                }
             }
 
-            ViewBag.Checked = tags;
+            editArticle.CheckTags = checkTags;
 
-            return View(_articleService.Get((int)id));
+            return View(editArticle);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Text")] Article article, string[] names)
+        public ActionResult Edit(EditArticle editArticle, string[] names)
         {
-
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                Article newArticle = _articleService.Get(article.Id);
-                newArticle.Name = article.Name;
-                newArticle.Tags.Clear();
-                newArticle.Text = article.Text;
-
-                if (names != null)
-                {
-                    _articleService.GetTvTariffWithChannels((newArticle), names);
-                }
-                else
-                {
-                    newArticle.Tags = _articleService.GetTags(article.Id).ToArray();
-                }
-                _articleService.Update(newArticle);
-
-                return RedirectToAction("GetArticles", new
-                {
-                    area = "",
-                    controller = "Article"
-                });
-            }
-            return View(article);
-        }
-
-        [HttpGet]
-        public ActionResult AddTag(int id)
-        {
-            Article article = _articleService.Get(id);
-
-            _articleId = id;
-
-            var err = article.Text.Split(' ').Where(c => c.Length > 5).GroupBy(c => c).OrderByDescending(g => g.Count()).Take(5).ToArray();
-
-            List<string> tags = new List<string>();
-
-            foreach (var item in err)
-            {
-                tags.Add(item.Key);
+                return View(editArticle);
             }
 
-            ViewBag.Tags = tags;
+            var article = _articleService.Get(editArticle.Id);
 
-            return View("AddTagDetails", article);
+            _mapper.Map(editArticle, article);
+
+            if (names != null)
+            {
+                article.Tags.Clear();
+                _articleService.GetArticlesWithTags(article, names);
+            }
+            else
+            {
+
+                article.Tags = _articleService.GetTags(article.Id).ToList();
+            }
+
+            _articleService.Update(article);
+
+            return RedirectToAction("GetArticles", "Article", new { area = "" });
         }
 
         [HttpGet]
@@ -145,29 +99,36 @@ namespace Task1ASP.Areas.Admin.Controllers
         {
             _articleService.Delete(article.Id);
 
-            return RedirectToAction("GetArticles", "Article", new
-            {
-                area = ""
-            });
+            return RedirectToAction("GetArticles", "Article", new { area = "" });
+        }
 
+        [HttpGet]
+        public ActionResult AddTag(int id)
+        {
+            var article = _articleService.Get(id);
+            var articleAddTag = _mapper.Map<ArticleAddTagVm>(article);
+
+            articleAddTag.PopularTags = _articleService.GetMostPopularTags(article, 5).ToList();
+
+            return View("AddTagDetails", articleAddTag);
         }
 
         [HttpPost]
-        public ActionResult AddTag(string[] selectedTags)
+        public ActionResult AddTag(ArticleAddTagVm articleAddTag)
         {
-            Article article = _articleService.Get(_articleId);
+            var article = _articleService.Get(articleAddTag.Id);
 
-            foreach (var item in selectedTags)
+            foreach (var item in articleAddTag.PopularTags)
             {
-                article.Tags.Add(new Tag { Text = item });
+                if (article.Tags.All(tag => tag.Text != item))
+                {
+                    article.Tags.Add(new Tag { Text = item });
+                }
             }
 
             _articleService.Update(article);
 
-            return RedirectToAction("GetArticles", "Article", new
-            {
-                area = ""
-            });
+            return RedirectToAction("GetArticles", "Article", new { area = "" });
         }
     }
 }

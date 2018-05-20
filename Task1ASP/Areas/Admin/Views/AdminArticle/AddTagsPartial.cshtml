@@ -1,20 +1,17 @@
-﻿@model List<Task1ASP.Areas.Admin.Models.CheckModel>
+﻿@model ICollection<Task1ASP.Areas.Admin.Models.CheckModel>
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @foreach (var s in Model)
 {
-    if (s.Checked == false)
-    {
-        <label class="checkbox checkbox-inline">
-            <input type="checkbox" name="names" value="@s.Tag.Text">@s.Tag.Text
-        </label>
-    }
-    else
-    {
-        <label class="checkbox checkbox-inline">
-            <input type="checkbox" name="names" checked="checked" value="@s.Tag.Text">@s.Tag.Text
-        </label>
-    }
+	<label class="checkbox checkbox-inline">
+		@if (s.Checked)
+		{
+			<input type="checkbox" name="names" checked="checked" value="@s.Tag.Text">@s.Tag.Text
+		}
+		else
+		{
+			<input type="checkbox" name="names" value="@s.Tag.Text">@s.Tag.Text
+		}
+	</label>
 }
-

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using BlogAsp.BLL.Interfaces;
@@ -36,18 +37,23 @@ namespace Task1ASP.Controllers
             {
                 return PartialView("Vote");
             }
-            else
-            {
-                return PartialView("VoteComplete");
-            }
+
+            return PartialView("VoteComplete");
         }
 
         [HttpPost]
         public ActionResult Vote(string gender)
         {
-            if (HttpContext.Request.Cookies["cookie"] == null)
+            var cookie = HttpContext.Request.Cookies["cookie"];
+
+            if (cookie == null)
             {
-                HttpContext.Response.Cookies["cookie"].Value = "value";
+                HttpContext.Response.Cookies.Add(new HttpCookie("cookie")
+                {
+                    HttpOnly = false,
+                    Value = "value",
+                    Expires = DateTime.UtcNow.AddMonths(1)
+                });
             }
 
             return PartialView("VoteComplete");

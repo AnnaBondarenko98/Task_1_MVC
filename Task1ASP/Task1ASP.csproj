@@ -192,6 +192,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminArticleController.cs" />
     <Compile Include="Areas\Admin\Models\CheckModel.cs" />
+    <Compile Include="Areas\Admin\Models\EditArticle.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Enums\Animals.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Infrastructure\Mapper\MapperInitialize.cs" />
     <Compile Include="Infrastructure\Mapper\ViewModelToDomainModel.cs" />
     <Compile Include="Infrastructure\Mapper\ViewModelToDTO.cs" />
+    <Compile Include="Areas\Admin\Models\ArticleAddTagVm.cs" />
     <Compile Include="Models\Article\ArticleVm.cs" />
     <Compile Include="Models\Login\LoginVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -234,7 +236,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\AdminArticle\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminArticle\AddTag.cshtml" />
     <Content Include="Areas\Admin\Views\AdminArticle\AddTagDetails.cshtml" />
     <Content Include="Areas\Admin\Views\AdminArticle\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminArticle\AddTagsPartial.cshtml" />
@@ -315,7 +316,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>10895</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
